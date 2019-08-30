@@ -1,3 +1,5 @@
 {
-    "/resources/css/main.css": "/resources/css/main.css"
+    "/resources/js/all.js": "/resources/js/all.js",
+    "/resources/css/main.css": "/resources/css/main.css",
+    "/resources/css/all.css": "/resources/css/all.css"
 }

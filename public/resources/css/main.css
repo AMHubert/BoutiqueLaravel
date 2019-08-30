@@ -4,8 +4,6 @@ body {
   font-family: "Roboto Condensed", Helvetica, sans-serif;
 }
 
-/* #region Header */
-
 header .brandLogo {
   height: 50px;
 }
@@ -17,8 +15,6 @@ header .nav-item > a {
 header a.dropdown-item {
   font-size: 1.15rem;
 }
-
-/* #endregion */
 
 main .container,
 main .container-fluid {

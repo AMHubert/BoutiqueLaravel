@@ -1,7 +1,7 @@
 <header>
     <nav class="nav navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.php">
-            <img class="brandLogo" src="resources/img/brandLogo.png" alt="Smarty Shop logo">
+        <a class="navbar-brand" href="{{route('index')}}">
+            <img class="brandLogo" src="{{asset('resources/img/brandLogo.png')}}" alt="Smarty Shop logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Accueil</a>
+                    <a class="nav-link" href="{{route('index')}}">Accueil</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -19,7 +19,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach ($categories as $category)
-                            <a class="dropdown-item" href="listing/{{$category->category_id}}">{{$category->category_name}}</a>
+                            <a class="dropdown-item" href="{{route('listing.category', ['category'=> $category->category_id])}}">{{$category->category_name}}</a>
                         @endforeach
                     </div>
                 </li>

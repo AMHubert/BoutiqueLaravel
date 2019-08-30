@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomeController@index');
-Route::get('/listing/{category}', 'HomeController@listing');
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/listing/{category}', 'HomeController@listing')->name('listing.category');
 
 Route::get('/cart', 'CartController@index');
