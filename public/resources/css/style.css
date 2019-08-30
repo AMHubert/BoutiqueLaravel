@@ -1,0 +1,162 @@
+html, body {
+    height: 100%;
+	font-family: 'Roboto Condensed', Helvetica, sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+/* #region header */
+.brandLogo {
+    height: 50px;
+}
+.nav-item > a{
+    font-size: 1.5rem;
+}
+a.dropdown-item{
+    font-size: 1.15rem;
+}
+/* #endregion header */
+
+.content{
+    flex: 1 0 auto;
+}
+.card-container{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-list-img{
+    position: relative;
+    width: 150px;
+    height: 200px;
+    margin: auto;
+}
+
+.game-img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.out-stock{
+	color: #fff;
+	font-size: 30px;
+	line-height: 1.5em;
+	text-shadow: 2px 2px 2px #000;
+	/* text-align: center; */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	background: rgba(255, 255, 255, 0.5);
+	height: 100%;
+	display: inline-flex;
+	align-items: center;
+}
+
+.details-img{
+    width: 300px;
+    height: 400px;
+    margin: auto;
+}
+
+.qte-input{
+    width: 200px;
+}
+
+/* #region Cart */
+/*
+.cart-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+*/
+/*
+#cart-list td{
+    padding: 10px;
+}
+#cart-list td:first-child{
+    width: 96px;
+}
+#cart-list td:nth-child(2),
+#cart-list td:last-child{
+    width: 100px;
+    text-align: center;
+}
+.cart-description{
+    display: inline-flex;
+    width: 70%;
+    justify-content: space-between;
+}
+.cart-description p{
+    margin: 0;
+}
+*/
+
+.cart-container{
+    width: 100%;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+th, td{
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.quantity-cell{
+    width: 20%;
+}
+
+.cart-game-img{
+    width: 75px;
+    height: 75px;
+}
+
+.cart-total{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.msg-tax{
+    margin: 0;
+    color: #919191;
+    font-size: 13px;
+    padding: 10px 0;
+}
+
+/* #endregion Cart */
+
+/* #region footer */
+footer{
+    flex-shrink: 0;
+    height: 160px;
+    align-self: end;
+}
+
+.site-map{
+    font-size: .75rem;
+}
+
+.address{
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.social-logo{
+    margin-right: 10px;
+    width:32px;
+    height:32px;
+    border-radius: 3px;
+}
+/* #endregion */

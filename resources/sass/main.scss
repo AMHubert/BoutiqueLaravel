@@ -1,0 +1,46 @@
+html,
+body {
+    height: 100%;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+}
+
+header {
+    .brandLogo {
+        height: 50px;
+    }
+
+    .nav-item>a {
+        font-size: 1.5rem;
+    }
+
+    a.dropdown-item {
+        font-size: 1.15rem;
+    }
+}
+
+main {
+
+    .container,
+    .container-fluid {
+        padding: 60px 15px 0;
+    }
+}
+
+
+footer {
+    .site-map {
+        font-size: .75rem;
+    }
+
+    .address {
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    .social-logo {
+        margin-right: 10px;
+        width: 32px;
+        height: 32px;
+        border-radius: 3px;
+    }
+}

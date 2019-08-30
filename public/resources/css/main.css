@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+  font-family: "Roboto Condensed", Helvetica, sans-serif;
+}
+
+/* #region Header */
+
+header .brandLogo {
+  height: 50px;
+}
+
+header .nav-item > a {
+  font-size: 1.5rem;
+}
+
+header a.dropdown-item {
+  font-size: 1.15rem;
+}
+
+/* #endregion */
+
+main .container,
+main .container-fluid {
+  padding: 60px 15px 0;
+}
+
+footer .site-map {
+  font-size: 0.75rem;
+}
+
+footer .address {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+footer .social-logo {
+  margin-right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+}
+
