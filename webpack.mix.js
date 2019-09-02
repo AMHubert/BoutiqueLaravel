@@ -15,19 +15,16 @@ const mix = require('laravel-mix');
 //     .sass('resources/sass/app.scss', 'public/css');
 
 mix.sass('resources/sass/main.scss', 'public/resources/css');
+mix.sass('resources/sass/utilities.scss', 'public/resources/css');
 
-/*
 mix.styles([
     'public/resources/css/main.css',
-    'public/resources/css/utilities.css',
-    'public/resources/bootstrap/css/bootstrap.min.css',
-    'public/resources/fontawesome/css/all.min.css'
+    'public/resources/css/utilities.css'
 ], 'public/resources/css/all.css');
 
 mix.js([
-    'public/resources/js/jquery-3.3.1.min.js',
     'public/resources/js/popper.min.js',
     'public/resources/bootstrap/js/bootstrap.min.js',
     'public/resources/bootstrap/js/bootstrap-spinner.js'
-], 'public/resources/js/all.js');
-*/
+], 'public/resources/js/bootstrap-all.js');
+

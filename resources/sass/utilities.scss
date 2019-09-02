@@ -1,0 +1,30 @@
+.border-gray {
+    border-color: #666666 !important;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.list-inside{
+    padding-left: 0;
+    list-style: inside;
+}
+
+.list-unstyle {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-unstyle li {
+    margin-bottom: 5px;
+}
+
+.link-unstyle {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.card-y-spacer{
+    padding: 15px 0;
+}

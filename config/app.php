@@ -178,7 +178,6 @@ return [
         /*
          * Created Service Providers...
          */
-        App\Providers\HomeServiceProvider::class,
 
     ],
 

@@ -19,3 +19,8 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/listing/{category}', 'HomeController@listing')->name('listing.category');
 
 Route::get('/cart', 'CartController@index');
+
+
+//Route::get('/admin', 'AdminController@index')->name('admin.index');
+Route::get('/admin/newGame', 'AdminController@gameForm')->name('game.form');
+Route::post('/admin/addgame', 'AdminController@addGame')->name('game.add');

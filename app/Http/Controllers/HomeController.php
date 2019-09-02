@@ -26,8 +26,13 @@ class HomeController extends Controller
 
     public function listing($categoryId)
     {
+
+        //$products = Models\Product::all()->categories()->where('category_id', $categoryId)->get();
+        $products = Models\Category::find($categoryId)->products()->get();
+
         $data = [
-            'category' => $categoryId
+            'category' => $categoryId,
+            'products' => $products
         ];
 
         return view('listing', $data);

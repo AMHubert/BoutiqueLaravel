@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('product_id');
             $table->string('product_name', 255);
             $table->text('product_description');
-            $table->string('product_image', 255);
+            $table->string('product_image', 255)->nullable();
             $table->float('product_price');
             $table->integer('product_stock', false, true);
         });
