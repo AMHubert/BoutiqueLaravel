@@ -44,10 +44,10 @@ class HomeController extends Controller
     }
 
     public function details($category, $productId) {
-        $product = Models\Product::find($productId)->categories()->where('category_name', $category);
+        $product = Models\Product::find($productId);
 
         $data = [
-
+            'category_name' => $category,
             'product' => $product
         ];
         return view('details', $data);

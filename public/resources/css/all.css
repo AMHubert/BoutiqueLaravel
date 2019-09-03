@@ -21,6 +21,12 @@ main .container-fluid {
   padding: 60px 15px 0;
 }
 
+main .details-img {
+  width: 300px;
+  height: 400px;
+  margin: auto;
+}
+
 footer .site-map {
   font-size: 0.75rem;
 }

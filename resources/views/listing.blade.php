@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body d-inline-flex justify-content-center flex-wrap">
                     <h5 class="card-title w-100">{{$product->product_name}}</h5>
-                    <a href="{{route('product.details', ['category' => $product->categories()->get()->category_name, 'productId' => $product->product_id])}}"
+                    <a href="{{route('product.details', ['category' => $category_name, 'productId' => $product->product_id])}}"
                         class="btn btn-primary align-self-end  stretched-link">Détails <i class="fas fa-angle-double-right"></i></a>
                 </div>
             </div>
