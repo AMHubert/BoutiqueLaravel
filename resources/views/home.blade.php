@@ -1,6 +1,5 @@
 @extends('shared.layout')
 @section('content')
-<main class="flex-shrink-0">
     <div class="container-fluid">
         <h1>Hello World !</h1>
         <ul>
@@ -11,7 +10,6 @@
         @endforeach
         </ul>
     </div>
-</main>
 @endsection
 
 @section('scripts')

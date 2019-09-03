@@ -9,7 +9,9 @@
 </head>
 <body class="d-flex flex-column h-100">
     @include('shared.header')
-    @yield('content')
+    <main class="flex-shrink-0">
+        @yield('content')
+    </main>
     @include('shared.footer')
     @section('scripts')
     @show

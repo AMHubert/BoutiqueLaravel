@@ -24,17 +24,32 @@ class HomeController extends Controller
         return view('home', $data);
     }
 
-    public function listing($categoryId)
+    public function listing($categoryId, $search = null)
     {
 
         //$products = Models\Product::all()->categories()->where('category_id', $categoryId)->get();
-        $products = Models\Category::find($categoryId)->products()->get();
+        $category = Models\Category::find($categoryId);
+        $categoryName = $category->category_name;
+        //$products = Models\Category::find($categoryId)->products()->get();
+        $products = $category->products()->get();
 
         $data = [
             'category' => $categoryId,
-            'products' => $products
+            'category_name' => $categoryName,
+            'products' => $products,
+            'search' => $search
         ];
 
         return view('listing', $data);
+    }
+
+    public function details($category, $productId) {
+        $product = Models\Product::find($productId)->categories()->where('category_name', $category);
+
+        $data = [
+
+            'product' => $product
+        ];
+        return view('details', $data);
     }
 }
