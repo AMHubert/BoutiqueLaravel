@@ -8,8 +8,7 @@ use App\Models;
 class HomeController extends Controller
 {
     //
-    public function index()
-    {
+    public function index() {
         $categories = Models\Category::all();
         $products = Models\Product::all();
         $isLogged = false;
@@ -21,16 +20,12 @@ class HomeController extends Controller
         ];
 
         //return view('home', ['categories' => $categories, 'products' => $products, 'isLogged' => $isLogged]);
-        return view('home', $data);
+        return view('home.home', $data);
     }
 
-    public function listing($categoryId, $search = null)
-    {
-
-        //$products = Models\Product::all()->categories()->where('category_id', $categoryId)->get();
+    public function listing($categoryId, $search = null) {
         $category = Models\Category::find($categoryId);
         $categoryName = $category->category_name;
-        //$products = Models\Category::find($categoryId)->products()->get();
         $products = $category->products()->get();
 
         $data = [
@@ -40,7 +35,7 @@ class HomeController extends Controller
             'search' => $search
         ];
 
-        return view('listing', $data);
+        return view('home.listing', $data);
     }
 
     public function details($category, $productId) {
@@ -50,6 +45,6 @@ class HomeController extends Controller
             'category_name' => $category,
             'product' => $product
         ];
-        return view('details', $data);
+        return view('home.details', $data);
     }
 }
