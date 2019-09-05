@@ -6,11 +6,11 @@
                 <ul class="list-inside">
                     <li class="site-map"><a class="link-unstyle" href="{{route('index')}}">Accueil</a></li>
                     <li class="site-map"><a class="link-unstyle"
-                            href="{{route('listing.category', ['category'=>'PS4'])}}">PS4</a></li>
+                            href="{{route('listing.category', ['category'=>str_replace(" ", "-", 'PS4')])}}">PS4</a></li>
                     <li class="site-map"><a class="link-unstyle"
-                            href="{{route('listing.category', ['category'=>'Xbox One'])}}">Xbox One</a></li>
+                            href="{{route('listing.category', ['category'=>str_replace(" ", "-", 'Xbox One')])}}">Xbox One</a></li>
                     <li class="site-map"><a class="link-unstyle"
-                            href="{{route('listing.category', ['category'=>'Nintendo Switch'])}}">Nintendo Switch</a></li>
+                            href="{{route('listing.category', ['category'=>str_replace(" ", "-", 'Nintendo Switch')])}}">Nintendo Switch</a></li>
                 </ul>
             </section>
             <section class="col-4 border-left border-right border-gray">

@@ -40,6 +40,6 @@ class CartController extends Controller
         //$cart = [$product, $quantity];
         //$request->session()->push('cart', $cart);
 
-        return redirect()->route('cartpage');
+        return redirect()->route('cart.page');
     }
 }

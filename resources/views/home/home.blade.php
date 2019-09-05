@@ -11,7 +11,7 @@
       <div>
         @foreach($categories as $category)
             @if($category->category_homepage)
-            <a class="btn btn-primary btn-lg" href="{{route('listing.category', ['categoryName'=> $category->category_name])}}" role="button">{{$category->category_name}}</a>
+            <a class="btn btn-primary btn-lg" href="{{route('listing.category', ['categoryName'=> str_replace(" ", "-", $category->category_name)])}}" role="button">{{$category->category_name}}</a>
             @endif
         @endforeach
       </div>
@@ -25,7 +25,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$product->product_name}} ({{$product->category_name}})</h5>
                 <p class="card-text">{{$product->product_description}}</p>
-                <a href="{{route('product.details', ['categoryName' => $product->category_name, 'productId' => $product->product_id])}}" class="btn btn-primary">Détails <i class="fas fa-angle-double-right"></i></a>
+                <a href="{{route('product.details', ['categoryName' => str_replace(" ", "-", $product->category_name), 'productId' => $product->product_id])}}" class="btn btn-primary">Détails <i class="fas fa-angle-double-right"></i></a>
             </div>
           </div>
         @endforeach

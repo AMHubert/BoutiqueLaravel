@@ -19,7 +19,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach ($categories as $category)
-                            <a class="dropdown-item" href="{{route('listing.category', ['categoryName'=> $category->category_name])}}">{{$category->category_name}}</a>
+                            <a class="dropdown-item" href="{{route('listing.category', ['categoryName'=> str_replace(" ", "-", $category->category_name)])}}">{{$category->category_name}}</a>
                         @endforeach
                     </div>
                 </li>

@@ -19,8 +19,12 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/listing/{categoryName}/{search?}', 'HomeController@listing')->name('listing.category');
 Route::get('/details/{categoryName}/{productId}', 'HomeController@details')->name('product.details');
 
-Route::get('/cart', 'CartController@cart')->name('cartpage');
+Route::get('/cart', 'CartController@cart')->name('cart.page');
 Route::post('/addToCart', 'CartController@addToCart')->name('cart.add');
+
+Route::namespace('Auth')->group(function() {
+    Route::get('/login', 'LoginController')->name('auth.login');
+});
 
 
 //Route::get('/admin', 'AdminController@index')->name('admin.index');

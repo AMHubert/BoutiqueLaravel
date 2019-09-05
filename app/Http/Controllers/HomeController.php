@@ -28,7 +28,9 @@ class HomeController extends Controller
 
     public function listing($categoryName, $search = null) {
         //$category = Models\Category::find($categoryId);
+        $categoryName = str_replace("-", " ", $categoryName);
         $category = Models\Category::all()->where('category_name', $categoryName)->first(); //Get category by name
+        if(empty($category)){ return view('error.404'); }
         $categoryName = $category->category_name;
         $products = $category->products()->get();
 
@@ -42,7 +44,11 @@ class HomeController extends Controller
     }
 
     public function details($categoryName, $productId) {
+        $categoryName = str_replace("-", " ", $categoryName);
         $product = Models\Product::find($productId);
+        $category = Models\Category::all()->where('category_name', $categoryName)->first();
+
+        if(empty($product) || empty($category)){ return view('error.404'); }
 
         $data = [
             'category_name' => $categoryName,
