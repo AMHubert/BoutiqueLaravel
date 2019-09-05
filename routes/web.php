@@ -16,11 +16,11 @@
 // });
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('/listing/{category}/{search?}', 'HomeController@listing')->name('listing.category');
-Route::get('/details/{category}/{productId}', 'HomeController@details')->name('product.details');
+Route::get('/listing/{categoryName}/{search?}', 'HomeController@listing')->name('listing.category');
+Route::get('/details/{categoryName}/{productId}', 'HomeController@details')->name('product.details');
 
 Route::get('/cart', 'CartController@cart')->name('cartpage');
-Route::get('/addToCart/{category}/{product}', 'CartController@addToCart')->name('cart.add');
+Route::post('/addToCart', 'CartController@addToCart')->name('cart.add');
 
 
 //Route::get('/admin', 'AdminController@index')->name('admin.index');

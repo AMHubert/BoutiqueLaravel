@@ -25,11 +25,74 @@ main {
         padding: 60px 15px 0;
     }
 
-    .details-img{
+    section.card-container{
+        margin: 1rem 0;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .details-img {
         width: 300px;
         height: 400px;
         margin: auto;
     }
+
+    .card-list-img {
+        position: relative;
+
+        .out-stock {
+            display: inline-flex;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #9D9D9D7F;
+
+            .overlay-text {
+                color: #fff;
+                font-size: 30px;
+                line-height: 1.5em;
+                text-shadow: 2px 2px 2px #000;
+                position: absolute;
+                top: 50%;
+            }
+        }
+    }
+
+    /* #region Cart */
+    .cart-container {
+        width: 100%;
+        padding-right: 50px;
+        padding-left: 50px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    th,
+    td {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+
+    .quantity-cell {
+        width: 20%;
+    }
+
+    .cart-game-img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .cart-total {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    /* #endregion */
 }
 
 

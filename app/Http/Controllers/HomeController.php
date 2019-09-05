@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classes\Product;
 use App\Models;
 
 class HomeController extends Controller
@@ -10,12 +11,14 @@ class HomeController extends Controller
     //
     public function index() {
         $categories = Models\Category::all();
-        $products = Models\Product::all();
+        //$products = Models\Product::all();
         $isLogged = false;
+
+        $productsCat = Product::getHighlight();
 
         $data = [
             'categories' => $categories,
-            'products' => $products,
+            'productsCat' => $productsCat,
             'isLogged' => $isLogged
         ];
 
@@ -23,13 +26,13 @@ class HomeController extends Controller
         return view('home.home', $data);
     }
 
-    public function listing($categoryId, $search = null) {
-        $category = Models\Category::find($categoryId);
+    public function listing($categoryName, $search = null) {
+        //$category = Models\Category::find($categoryId);
+        $category = Models\Category::all()->where('category_name', $categoryName)->first(); //Get category by name
         $categoryName = $category->category_name;
         $products = $category->products()->get();
 
         $data = [
-            'category' => $categoryId,
             'category_name' => $categoryName,
             'products' => $products,
             'search' => $search
@@ -38,11 +41,11 @@ class HomeController extends Controller
         return view('home.listing', $data);
     }
 
-    public function details($category, $productId) {
+    public function details($categoryName, $productId) {
         $product = Models\Product::find($productId);
 
         $data = [
-            'category_name' => $category,
+            'category_name' => $categoryName,
             'product' => $product
         ];
         return view('home.details', $data);

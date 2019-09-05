@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('category_description', 255)->nullable();
             $table->string('category_image', 255)->nullable();
             $table->integer('category_parent')->nullable();
+            $table->boolean('category_homepage')->default('false');
         });
     }
 

@@ -20,8 +20,10 @@
             </div>
             <input type="button" class="btn btn-success" value="Ajouter au panier" disabled>
             @else
-            <form class="form-inline" action="addToCart.php" method="post">
+            <form class="form-inline" action="{{route('cart.add')}}" method="post">
+                @csrf
                 <input type="hidden" name="productId" value="{{$product->product_id}}">
+                <input type="hidden" name="productCat" value="{{$category_name}}">
                 <div class="qte-input mr-3 d-inline-flex">
                     <label class="mr-2" for="quantity">Qte:</label>
                     <input type="number" class="form-control" name="quantity" id="quantity" min="1" value="1">

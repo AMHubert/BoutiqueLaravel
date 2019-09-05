@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('product_image', 255)->nullable();
             $table->float('product_price');
             $table->integer('product_stock', false, true);
+            $table->boolean('product_highlighted')->default('false');
         });
     }
 
