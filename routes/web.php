@@ -22,10 +22,6 @@ Route::get('/details/{categoryName}/{productId}', 'HomeController@details')->nam
 Route::get('/cart', 'CartController@cart')->name('cart.page');
 Route::post('/addToCart', 'CartController@addToCart')->name('cart.add');
 
-Route::namespace('Auth')->group(function() {
-    Route::get('/login', 'LoginController')->name('auth.login');
-});
-
 
 //Route::get('/admin', 'AdminController@index')->name('admin.index');
 Route::get('/admin/newGame', 'AdminController@gameForm')->name('game.form');
