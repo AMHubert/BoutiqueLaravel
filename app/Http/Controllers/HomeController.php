@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Classes\Product;
 use App\Models;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -63,5 +64,16 @@ class HomeController extends Controller
             'product' => $product
         ];
         return view('home.details', $data);
+    }
+
+    public function account()
+    {
+        $user = Auth::user();
+
+        $data = [
+            "user" => $user
+        ];
+
+        return view('home.account', $data);
     }
 }

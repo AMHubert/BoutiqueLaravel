@@ -38,7 +38,7 @@
                 </div>
             </form>
             @auth
-                <a class="btn btn-light mr-3" href="#"><i class="fas fa-user"></i> Mon Compte</a>
+                <a class="btn btn-light mr-3" href="{{route('home.account')}}"><i class="fas fa-user"></i> Mon Compte</a>
                 <a class="btn btn-light mr-3" href="{{route('user.logout')}}"><i class="fas fa-sign-out-alt"></i> Se Deconnecter</a>
             @endauth
             @guest

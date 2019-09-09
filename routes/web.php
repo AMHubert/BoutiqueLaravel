@@ -20,13 +20,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/listing/{categoryName}/{search?}', 'HomeController@listing')->name('listing.category');
 Route::post('/search', 'HomeController@search')->name('listing.search');
 Route::get('/details/{categoryName}/{productId}', 'HomeController@details')->name('product.details');
+Route::get('/account', 'HomeController@account')->name('home.account');
 
 Route::get('/cart', 'CartController@cart')->name('cart.page');
 Route::post('/addToCart', 'CartController@addToCart')->name('cart.add');
 
 Auth::routes();
-Route::get('/logout', 'LogoutController@logout')->name('user.logout');
+Route::get('/logout', 'UserController@logout')->name('user.logout');
+Route::post('/updateinfo', 'UserController@changeinfo')->name('user.changeinfo');
 
-//Route::get('/admin', 'AdminController@index')->name('admin.index');
-Route::get('/admin/newGame', 'AdminController@gameForm')->name('game.form');
-Route::post('/admin/addgame', 'AdminController@addGame')->name('game.add');
+Route::middleware('admin')->group(function(){
+    Route::get('/admin', 'AdminController@index')->name('admin.index');
+    Route::get('/admin/newGame', 'AdminController@gameForm')->name('game.form');
+    Route::post('/admin/addgame', 'AdminController@addGame')->name('game.add');
+});
+

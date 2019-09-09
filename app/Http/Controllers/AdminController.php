@@ -8,6 +8,15 @@ use App\Models;
 class AdminController extends Controller
 {
 
+    function index(){
+
+    }
+
+    function login()
+    {
+
+    }
+
     function gameForm(){
         $categories = Models\Category::all();
 
