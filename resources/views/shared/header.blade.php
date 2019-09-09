@@ -24,7 +24,7 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        {{-- </div> --}}
         <div class="form-inline ml-auto">
             <form action="{{route('listing.search')}}" method="post">
                 @csrf
@@ -49,5 +49,6 @@
             @endguest
             <a class="btn btn-light mr-3" href="cart.php"><i class="fas fa-shopping-cart"></i> Panier</a>
         </div>
+    </div> <!-- nav bar -->
     </nav>
 </header>

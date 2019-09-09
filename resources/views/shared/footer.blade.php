@@ -1,7 +1,7 @@
 <footer class="mt-auto pt-3 bg-dark text-light">
     <div class="container-fluid">
         <div class="row">
-            <section class="col-4">
+            <section class="col-6 col-xl-4 d-none d-lg-block">
                 <h5 class="text-underline font-weight-bold">Plan du site :</h5>
                 <ul class="list-inside">
                     <li class="site-map"><a class="link-unstyle" href="{{route('index')}}">Accueil</a></li>
@@ -13,7 +13,7 @@
                             href="{{route('listing.category', ['category'=>str_replace(" ", "-", 'Nintendo Switch')])}}">Nintendo Switch</a></li>
                 </ul>
             </section>
-            <section class="col-4 border-left border-right border-gray">
+            <section class="col-6 col-xl-4  border-left border-right border-gray">
                 <h5 class="text-underline font-weight-bold">Contact :</h5>
                 <ul class="list-unstyle">
                     <li><span class="font-weight-bold">Email:</span> smartyshop@gmail.com</li>
@@ -26,7 +26,7 @@
                     </li>
                 </ul>
             </section>
-            <section class="col-4">
+            <section class="col-6 col-xl-4 ">
                 <h5 class="text-underline font-weight-bold">Réseau Sociaux :</h5>
                 <ul class="list-unstyle">
                     <li>

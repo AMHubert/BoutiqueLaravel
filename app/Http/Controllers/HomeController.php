@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classes\Order;
 use App\Classes\Product;
 use App\Models;
 use Illuminate\Support\Facades\Auth;
@@ -69,9 +70,11 @@ class HomeController extends Controller
     public function account()
     {
         $user = Auth::user();
+        $orders = Order::getAllUserOrder($user->id);
 
         $data = [
-            "user" => $user
+            "user" => $user,
+            'orders' => $orders
         ];
 
         return view('home.account', $data);

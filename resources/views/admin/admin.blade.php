@@ -1,4 +1,4 @@
-@extends('shared.layout')
+@extends('admin.adminlayout')
 @section('content')
 <form action="{{route('game.add')}}" method="POST">
     @csrf
