@@ -12,11 +12,6 @@ class AdminController extends Controller
 
     }
 
-    function login()
-    {
-
-    }
-
     function gameForm(){
         $categories = Models\Category::all();
 
