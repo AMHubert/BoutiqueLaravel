@@ -27,11 +27,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $categories = Models\Category::all();
-        $isLogged = false;
         $subtitle = 'Index';
 
         View::share('subtitle', $subtitle);
         View::share('categories', $categories);
-        View::share('isLogged', $isLogged);
     }
 }

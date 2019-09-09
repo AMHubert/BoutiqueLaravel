@@ -26,7 +26,8 @@
             </ul>
         </div>
         <div class="form-inline ml-auto">
-            <form action="search.php" method="post">
+            <form action="{{route('listing.search')}}" method="post">
+                @csrf
                 <div class="input-group mr-3">
                     <input type="text" class="form-control" name="search" placeholder="Recherche" aria-label="Search">
                     <div class="input-group-append">
@@ -36,12 +37,16 @@
                     </div>
                 </div>
             </form>
-            @if ($isLogged)
+            @auth
                 <a class="btn btn-light mr-3" href="#"><i class="fas fa-user"></i> Mon Compte</a>
-                <a class="btn btn-light mr-3" href="logout.php"><i class="fas fa-sign-out-alt"></i> Se Deconnecter</a>
-            @else
-                <a class="btn btn-light mr-3" href="login.php"><i class="fas fa-sign-in-alt"></i> Se Connecter</a>
-            @endif
+                <a class="btn btn-light mr-3" href="{{route('user.logout')}}"><i class="fas fa-sign-out-alt"></i> Se Deconnecter</a>
+            @endauth
+            @guest
+            <div class="btn-group mr-3" role="group" aria-label="Login / Register">
+                <a class="btn btn-light" href="{{route('login')}}">Se Connecter</a>
+                <a class="btn btn-light btn-group-separator" href="{{route('register')}}">S'enregistrer</a>
+            </div>
+            @endguest
             <a class="btn btn-light mr-3" href="cart.php"><i class="fas fa-shopping-cart"></i> Panier</a>
         </div>
     </nav>

@@ -32,4 +32,15 @@ class Product {
 
         return $productsCategories;
     }
+
+    static function getSearchProduct($search){
+        $product = DB::table('productcategory')
+                    ->join('categories', 'productcategory.category_id', '=', 'categories.category_id')
+                    ->join('products', 'productcategory.product_id', '=', 'products.product_id')
+                    ->select('products.*', 'categories.*')
+                    ->where('products.product_name', 'like',  '%'.$search.'%')
+                    ->get();
+
+        return $product;
+    }
 }

@@ -12,22 +12,18 @@ class HomeController extends Controller
     public function index() {
         $categories = Models\Category::all();
         //$products = Models\Product::all();
-        $isLogged = false;
 
         $productsCat = Product::getHighlight();
 
         $data = [
             'categories' => $categories,
-            'productsCat' => $productsCat,
-            'isLogged' => $isLogged
+            'productsCat' => $productsCat
         ];
 
-        //return view('home', ['categories' => $categories, 'products' => $products, 'isLogged' => $isLogged]);
         return view('home.home', $data);
     }
 
-    public function listing($categoryName, $search = null) {
-        //$category = Models\Category::find($categoryId);
+    public function listing($categoryName) {
         $categoryName = str_replace("-", " ", $categoryName);
         $category = Models\Category::all()->where('category_name', $categoryName)->first(); //Get category by name
         if(empty($category)){ return view('error.404'); }
@@ -37,7 +33,19 @@ class HomeController extends Controller
         $data = [
             'category_name' => $categoryName,
             'products' => $products,
-            'search' => $search
+            'isSearch' => false
+        ];
+
+        return view('home.listing', $data);
+    }
+
+    public function search(Request $request){
+
+        $products = Product::getSearchProduct($request->search);
+
+        $data = [
+            'products' => $products,
+            'isSearch' => true
         ];
 
         return view('home.listing', $data);
