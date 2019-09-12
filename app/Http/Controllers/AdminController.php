@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models;
+use App\User;
 
 class AdminController extends Controller
 {
 
     function index(){
-        return view('admin.index');
+        $data = [
+            'pageTitle' => "Espace Admin"
+        ];
+        return view('admin.index', $data);
     }
 
     function login(){
@@ -25,13 +29,28 @@ class AdminController extends Controller
         }
     }
 
-    function gameForm(){
+    function gameList(){
+        $games = Models\Product::with('categories')->get();
         $categories = Models\Category::all();
-
-        return view('admin.admin', compact($categories));
+        $data = [
+            'games' => $games,
+            'categories' => $categories,
+            'pageTitle' => "Liste des jeux"
+        ];
+        return view('admin.gamelist', $data);
     }
 
     function addGame(Request $request){
+
+        $validatedData = $request->validate([
+            'product_name' => 'required',
+            'product_description' => 'required',
+            'product_price' => 'required',
+            'product_stock' => 'required',
+            'categories' => 'required'
+        ]);
+
+
         // Création d'un nouveau produit
         $product = new Models\Product;
         // Remplissage des champs
@@ -45,5 +64,44 @@ class AdminController extends Controller
         $categories = $request->categories;
         // Ajout de catégorie correspondant
         $product->categories()->attach($categories);
+
+        return redirect()->route('admin.game.list');
+    }
+
+    function categoryList(){
+        $categories = Models\Category::all();
+        $data = [
+            'categories' => $categories,
+            'pageTitle' => "Liste des categories"
+        ];
+        return view('admin.categorylist', $data);
+    }
+
+    function addCategory(Request $request){
+        $validatedData = $request->validate([
+            'category_name' => 'required',
+            'category_description' => 'required'
+        ]);
+
+
+        // Création d'un nouveau produit
+        $category = new Models\Category;
+        // Remplissage des champs
+        $category->category_name = $request->category_name;
+        $category->category_description = $request->category_description;
+
+        $category->save();
+
+        return redirect()->route('admin.category.list');
+    }
+
+    function adminList(){
+        $admins = User::where('isAdmin', 1)->get();
+
+        $data = [
+            'admins' => $admins,
+            'pageTitle' => "Liste des jeux"
+        ];
+        return view('admin.adminlist', $data);
     }
 }

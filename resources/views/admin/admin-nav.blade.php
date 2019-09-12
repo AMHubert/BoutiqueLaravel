@@ -1,0 +1,60 @@
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+                <div class="navbar-header">
+                    <a href="" class="navbar-brand d-none d-sm-inline-block">
+                        <div class="brand-text d-none d-lg-inline-block">
+                            <span>Smarty Shop</span> <strong>Dashboard</strong>
+                        </div>
+                        <!-- For smaller screen -->
+                        <div class="brand-text d-none d-sm-inline-block d-lg-none">
+                            <strong>Dashboard</strong>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="nav-menu d-flex flex-md-row align-items-md-center">
+                    <a href="{{route('user.logout')}}" class="nav-link logout">
+                        <span class="d-none d-sm-inline">Logout </span><i class="fas fa-sign-out-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="page-content d-flex align-items-stretch h-100">
+    <nav class="side-navbar h-100">
+        <span class="heading">Admin</span>
+        <ul class="list-unstyled">
+            <li>
+                <a href="{{route('admin.game.list')}}">
+                    <i class="fas fa-gamepad fa-2x"></i> Jeux
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.category.list')}}">
+                    <i class="fas fa-list fa-2x"></i> Categories
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.admin.list')}}">
+                    <i class="fas fa-user fa-2x"></i> Admins
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content-inner">
+        <section class="page-header">
+            <div class="container-fluid">
+                <h2 class="mb-0 page-title">Smarty Shop</h2>
+            </div>
+        </section>
+        <main>
+            @yield('content')
+        </main>
+    </div>
+
+</div>

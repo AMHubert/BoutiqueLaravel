@@ -2,6 +2,10 @@
   border-color: #666666 !important;
 }
 
+.btn-group-separator {
+  border-left-color: black;
+}
+
 .text-underline {
   text-decoration: underline;
 }
@@ -9,11 +13,6 @@
 .list-inside {
   padding-left: 0;
   list-style: inside;
-}
-
-.list-unstyle {
-  padding-left: 0;
-  list-style: none;
 }
 
 .list-unstyle li {

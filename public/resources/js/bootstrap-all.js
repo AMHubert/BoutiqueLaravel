@@ -16649,6 +16649,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./resources/sass/admin.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/admin.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/main.scss":
 /*!**********************************!*\
   !*** ./resources/sass/main.scss ***!
@@ -16672,9 +16683,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ }),
 
 /***/ 0:
-/*!******************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./public/resources/js/popper.min.js ./public/resources/bootstrap/js/bootstrap.min.js ./public/resources/bootstrap/js/bootstrap-spinner.js ./resources/sass/main.scss ./resources/sass/utilities.scss ***!
-  \******************************************************************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./public/resources/js/popper.min.js ./public/resources/bootstrap/js/bootstrap.min.js ./public/resources/bootstrap/js/bootstrap-spinner.js ./resources/sass/main.scss ./resources/sass/utilities.scss ./resources/sass/admin.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16682,7 +16693,8 @@ __webpack_require__(/*! C:\laragon\www\BoutiqueLaravel\public\resources\js\poppe
 __webpack_require__(/*! C:\laragon\www\BoutiqueLaravel\public\resources\bootstrap\js\bootstrap.min.js */"./public/resources/bootstrap/js/bootstrap.min.js");
 __webpack_require__(/*! C:\laragon\www\BoutiqueLaravel\public\resources\bootstrap\js\bootstrap-spinner.js */"./public/resources/bootstrap/js/bootstrap-spinner.js");
 __webpack_require__(/*! C:\laragon\www\BoutiqueLaravel\resources\sass\main.scss */"./resources/sass/main.scss");
-module.exports = __webpack_require__(/*! C:\laragon\www\BoutiqueLaravel\resources\sass\utilities.scss */"./resources/sass/utilities.scss");
+__webpack_require__(/*! C:\laragon\www\BoutiqueLaravel\resources\sass\utilities.scss */"./resources/sass/utilities.scss");
+module.exports = __webpack_require__(/*! C:\laragon\www\BoutiqueLaravel\resources\sass\admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

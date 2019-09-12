@@ -8,16 +8,20 @@
     <link rel="stylesheet" href="{{asset('resources/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('resources/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('resources/css/all-admin.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <script src="{{asset('resources/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('resources/js/jquery.validate.min.js')}}"></script>
     <script src="{{asset('resources/js/bootstrap-all.js')}}"></script>
 </head>
-<body class="d-flex flex-column h-100">
-    <header></header>
+<body class="page">
+    @include('admin.admin-nav')
 
-    <main class="flex-shrink-0">
+    {{-- <main class="flex-shrink-0">
         @yield('content')
-    </main>
+    </main> --}}
 
     <footer></footer>
+    @section('scripts')
+    @show
 </body>
 </html>

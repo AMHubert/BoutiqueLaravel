@@ -15,7 +15,7 @@
             </section>
             <section class="col-6 col-xl-4  border-left border-right border-gray">
                 <h5 class="text-underline font-weight-bold">Contact :</h5>
-                <ul class="list-unstyle">
+                <ul class="list-unstyled">
                     <li><span class="font-weight-bold">Email:</span> smartyshop@gmail.com</li>
                     <li>
                         <span class="font-weight-bold">Adresse:</span>
@@ -28,7 +28,7 @@
             </section>
             <section class="col-6 col-xl-4 ">
                 <h5 class="text-underline font-weight-bold">Réseau Sociaux :</h5>
-                <ul class="list-unstyle">
+                <ul class="list-unstyled">
                     <li>
                         <a class="link-unstyle" href="#"><img class="social-logo"
                                 src="{{asset('resources/img/facebook.svg')}}" alt="Logo Facebook">Facebook</a>
