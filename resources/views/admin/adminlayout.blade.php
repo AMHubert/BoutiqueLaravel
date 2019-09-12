@@ -20,7 +20,6 @@
         @yield('content')
     </main> --}}
 
-    <footer></footer>
     @section('scripts')
     @show
 </body>

@@ -33,12 +33,14 @@ Route::get('/admin/login', 'AdminController@login')->name('admin.login');
 Route::post('/admin/login/verify', 'AdminController@verifyLogin')->name('admin.login-verify');
 Route::middleware('admin')->group(function(){
     Route::get('/admin', 'AdminController@index')->name('admin.index');
+    // Route Game
     Route::get('/admin/games', 'AdminController@gameList')->name('admin.game.list');
     Route::post('/admin/addgame', 'AdminController@addGame')->name('admin.game.add');
-
+    // Route Category
     Route::get('/admin/categories', 'AdminController@categoryList')->name('admin.category.list');
-    Route::post('/admin/categories', 'AdminController@addCategory')->name('admin.category.add');
-
+    Route::post('/admin/addcategory', 'AdminController@addCategory')->name('admin.category.add');
+    // Route Admin
     Route::get('/admin/admins', 'AdminController@adminList')->name('admin.admin.list');
+    Route::post('/admin/addadmin', 'AdminController@addAdmin')->name('admin.admin.add');
 });
 

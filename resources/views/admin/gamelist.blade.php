@@ -14,7 +14,7 @@
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
-                        <label for="product_name">Name:</label>
+                        <label for="product_name">Nom:</label>
                         <input type="text" class="form-control" name="product_name" id="product_name">
                     </div>
                     <div class="form-group">
@@ -22,13 +22,14 @@
                         <textarea class="form-control" name="product_description" id="product_description"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="product_price">Price:</label>
+                        <label for="product_price">Prix:</label>
                         <input type="text" class="form-control" name="product_price" id="product_price">
                     </div>
                     <div class="form-group">
                         <label for="product_stock">Stock:</label>
                         <input type="text" class="form-control" name="product_stock" id="product_stock">
                     </div>
+                    <p>Categories:</p>
                     <div class="row my-2">
                         @foreach ($categories as $category)
                         <div class='col-6 custom-control custom-checkbox'>
@@ -90,6 +91,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $games->links() }}
         </div>
     </div>
 </div>

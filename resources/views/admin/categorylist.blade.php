@@ -14,7 +14,7 @@
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
-                        <label for="category_name">Name:</label>
+                        <label for="category_name">Nom:</label>
                         <input type="text" class="form-control" name="category_name" id="category_name">
                     </div>
                     <div class="form-group">

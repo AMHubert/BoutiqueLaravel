@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models;
 use App\User;
 
@@ -30,7 +31,7 @@ class AdminController extends Controller
     }
 
     function gameList(){
-        $games = Models\Product::with('categories')->get();
+        $games = Models\Product::with('categories')->paginate(25);
         $categories = Models\Category::all();
         $data = [
             'games' => $games,
@@ -103,5 +104,26 @@ class AdminController extends Controller
             'pageTitle' => "Liste des jeux"
         ];
         return view('admin.adminlist', $data);
+    }
+
+    function addAdmin(Request $request){
+        $validatedData = $request->validate([
+            'admin_name' => 'required',
+            'admin_email' => 'required',
+            'admin_pass' => 'required|min:8'
+        ]);
+
+
+        // Création d'un nouveau produit
+        $admin = new User;
+        // Remplissage des champs
+        $admin->name = $request->admin_name;
+        $admin->email = $request->admin_email;
+        $admin->password = Hash::make($request->admin_pass);
+        $admin->isAdmin = 1;
+
+        $admin->save();
+
+        return redirect()->route('admin.admin.list');
     }
 }
