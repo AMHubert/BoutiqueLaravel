@@ -16,13 +16,13 @@ class AdminCheck
      */
     public function handle($request, Closure $next)
     {
-        // if(!Auth::check()){
-        //     return redirect()->route('index');
-        // }
+        if(!Auth::check()){
+            return redirect()->route('admin.login');
+        }
 
         $user = Auth::user();
         if($user->isAdmin === 0){
-            return redirect()->route('index');
+            return redirect()->route('admin.login');
         }
 
         return $next($request);

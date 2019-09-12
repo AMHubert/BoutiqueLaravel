@@ -16,11 +16,17 @@ const mix = require('laravel-mix');
 
 mix.sass('resources/sass/main.scss', 'public/resources/css');
 mix.sass('resources/sass/utilities.scss', 'public/resources/css');
+mix.sass('resources/sass/admin.scss', 'public/resources/css');
 
 mix.styles([
     'public/resources/css/main.css',
     'public/resources/css/utilities.css'
 ], 'public/resources/css/all.css');
+
+mix.styles([
+    'public/resources/css/admin.css',
+    'public/resources/css/utilities.css'
+], 'public/resources/css/all-admin.css');
 
 mix.js([
     'public/resources/js/popper.min.js',

@@ -29,6 +29,8 @@ Auth::routes();
 Route::get('/logout', 'UserController@logout')->name('user.logout');
 Route::post('/updateinfo', 'UserController@changeinfo')->name('user.changeinfo');
 
+Route::get('/admin/login', 'AdminController@login')->name('admin.login');
+Route::post('/admin/login/verify', 'AdminController@verifyLogin')->name('admin.login-verify');
 Route::middleware('admin')->group(function(){
     Route::get('/admin', 'AdminController@index')->name('admin.index');
     Route::get('/admin/newGame', 'AdminController@gameForm')->name('game.form');
