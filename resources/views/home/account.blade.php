@@ -42,8 +42,16 @@
             <div class="card">
                 <h5 class="card-header">Mes commandes</h5>
                 <div class="card-body">
-                @foreach($orders as $order)
-                @endforeach
+                    <table class="w-100">
+                    @foreach($orders as $order)
+                        <tr>
+                            <td class="text-left">Commande du {{$order->order_date}}</td>
+                            <td class="text-right">
+                                <a href="#" class="btn btn-info">Détails</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </table>
                 </div>
             </div>
         </div>

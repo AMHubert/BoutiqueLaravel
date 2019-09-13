@@ -24,7 +24,7 @@
     </nav>
 </header>
 
-<div class="page-content d-flex align-items-stretch h-100">
+<div class="page-content d-flex align-items-stretch">
     <nav class="side-navbar">
         <span class="heading">Admin</span>
         <ul class="list-unstyled">

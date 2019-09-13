@@ -47,7 +47,7 @@
                 <a class="btn btn-light btn-group-separator" href="{{route('register')}}">S'enregistrer</a>
             </div>
             @endguest
-            <a class="btn btn-light mr-3" href="cart.php"><i class="fas fa-shopping-cart"></i> Panier</a>
+            <a class="btn btn-light mr-3" href="{{route('cart.page')}}"><i class="fas fa-shopping-cart"></i> Panier</a>
         </div>
     </div> <!-- nav bar -->
     </nav>

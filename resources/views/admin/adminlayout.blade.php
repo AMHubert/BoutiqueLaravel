@@ -13,7 +13,7 @@
     <script src="{{asset('resources/js/jquery.validate.min.js')}}"></script>
     <script src="{{asset('resources/js/bootstrap-all.js')}}"></script>
 </head>
-<body class="page">
+<body class="page vh-100">
     @include('admin.admin-nav')
 
     {{-- <main class="flex-shrink-0">

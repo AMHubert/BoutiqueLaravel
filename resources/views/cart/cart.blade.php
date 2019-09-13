@@ -28,7 +28,7 @@
                         @foreach ($cart as $item)
 						<tr id="cart-list" class="border">
 							<td>
-								<a href="{{route('product.details', ['category'=> $item[0]->_category, 'productId'=>$item[0]->_id])}}">
+								<a href="{{route('product.details', ['categoryName'=> $item[0]->_category, 'productId'=>$item[0]->_id])}}">
 									<img class="cart-game-img" src="{{asset('resources/img/game/gameSquare/'.$item[0]->_img)}}" alt="Image de {{$item[0]->_name}}">
 								</a>
 							</td>
@@ -56,7 +56,7 @@
 					<div class="card-body text-center">
 						<p class="card-text cart-total">{{number_format($priceTotal, 2, ',', ' ')}}€</p>
 						<p class="card-text">Prix HT: {{number_format($priceTotalExclTax, 2, ',', ' ')}}€</p>
-						<a href="#" class="btn btn-success">Passer la commande</a>
+						<a href="{{route('cart.checkout')}}" class="btn btn-success">Passer la commande</a>
 					</div>
 				</div>
 				<p class="msg-tax">Panier affiché TTC sur la base d'une TVA à {{$VATPercent}}%.</p>

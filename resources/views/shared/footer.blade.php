@@ -29,11 +29,11 @@
             <section class="col-6 col-xl-4 ">
                 <h5 class="text-underline font-weight-bold">Réseau Sociaux :</h5>
                 <ul class="list-unstyled">
-                    <li>
+                    <li class="my-2">
                         <a class="link-unstyle" href="#"><img class="social-logo"
                                 src="{{asset('resources/img/facebook.svg')}}" alt="Logo Facebook">Facebook</a>
                     </li>
-                    <li>
+                    <li class="my-2">
                         <a class="link-unstyle" href="#"><img class="social-logo"
                                 src="{{asset('resources/img/twitter.svg')}}" alt="Logo Twitter">Twitter</a>
                     </li>

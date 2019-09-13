@@ -9,13 +9,15 @@ use Illuminate\Database\Schema\Builder;
 class Product {
     public $_id;
     public $_name;
+    public $_description;
     public $_img;
     public $_category;
     public $_price;
 
-    public function __construct($id, $name, $img, $category, $price) {
+    public function __construct($id, $name, $description, $img, $category, $price) {
         $this->_id = $id;
         $this->_name = $name;
+        $this->_description = $description;
         $this->_img = $img;
         $this->_category = $category;
         $this->_price = $price;

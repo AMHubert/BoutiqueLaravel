@@ -83,6 +83,10 @@ nav.side-navbar ul li a i {
   transition: color 0.3s;
 }
 
+div.page-content {
+  min-height: calc(100% - 70px);
+}
+
 .content-inner {
   position: relative;
   padding-bottom: 80px;
