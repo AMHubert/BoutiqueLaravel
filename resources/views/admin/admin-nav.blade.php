@@ -44,6 +44,14 @@
                 </a>
             </li>
         </ul>
+        <span class="heading">Extra</span>
+        <ul>
+            <li>
+                <a href="{{route('user.logout')}}">
+                    <i class="fas fa-sign-out-alt fa-2x"></i> Logout
+                </a>
+            </li>
+        </ul>
     </nav>
 
     <div class="content-inner">
