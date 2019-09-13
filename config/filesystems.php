@@ -54,6 +54,10 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'public_game' => [
+            'driver' => 'local',
+            'root' => public_path() . '/resources/img/game/gameBoxArt',
+        ],
 
         's3' => [
             'driver' => 's3',

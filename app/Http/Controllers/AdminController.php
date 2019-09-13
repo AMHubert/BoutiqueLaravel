@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Models;
 use App\User;
 
@@ -57,6 +59,12 @@ class AdminController extends Controller
         // Remplissage des champs
         $product->product_name = $request->product_name;
         $product->product_description = $request->product_description;
+        if(!empty($request->product_image)){
+            $img_name = Str::camel($request->product_name) . $request->product_image->getClientOriginalExtension();
+            $request->product_imageBoxArt->move(public_path('resources/img/game/gameBoxArt'), $img_name);
+            $request->product_imageSquare->move(public_path('resources/img/game/gameSquare'), $img_name);
+            $product->product_image = $img_name;
+        }
         $product->product_price = $request->product_price;
         $product->product_stock = $request->product_stock;
 

@@ -10,7 +10,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('admin.game.add')}}" method="POST" id="gameForm">
+            <form action="{{route('admin.game.add')}}" method="POST" id="gameForm" enctype="multipart/form-data">
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
@@ -20,6 +20,20 @@
                     <div class="form-group">
                         <label for="product_description">Description:</label>
                         <textarea class="form-control" name="product_description" id="product_description"></textarea>
+                    </div>
+                    <p>Image Box Art (600x800 recommandé):</p>
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="product_imageBoxArt" id="product_imageBoxArt">
+                            <label class="custom-file-label" for="product_imageBoxArt">Choose file</label>
+                        </div>
+                    </div>
+                    <p>Image Carré (500x500 recommandé):</p>
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="product_imageSquare" id="product_imageSquare">
+                            <label class="custom-file-label" for="product_imageSquare">Choose file</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="product_price">Prix:</label>
@@ -101,6 +115,11 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+
+        $('input[type="file"]').on('change', function(e){
+            var label = $(this).next();
+            label.text(e.target.files[0].name);
+        });
 
         jQuery.validator.setDefaults({
             errorElement: 'span',
