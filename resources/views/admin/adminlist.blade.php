@@ -61,7 +61,8 @@
                             <td>{{$admin->name}}</td>
                             <td>{{$admin->email}}</td>
                             <td>
-                                <button class="btn btn-info">Détails</button>
+                                <button class="btn btn-info update"><i class="fas fa-edit"></i></button>
+                                <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach

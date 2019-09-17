@@ -22,7 +22,7 @@ class AdminCheck
 
         $user = Auth::user();
         if($user->isAdmin === 0){
-            return redirect()->route('admin.login');
+            return redirect()->route('admin.login', ['error' => 'error']);
         }
 
         return $next($request);

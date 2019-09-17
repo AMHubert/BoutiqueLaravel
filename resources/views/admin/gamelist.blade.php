@@ -1,6 +1,6 @@
 @extends('admin.adminlayout')
 @section('content')
-<!-- Modal form -->
+<!-- Modal Add Form -->
 <div class="modal" id="addGameModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -63,7 +63,10 @@
         </div>
     </div>
 </div>
-<!-- End Modal -->
+<!-- End Modal Add Form -->
+<section id="updateModal">
+
+</section>
 
 <div class="card">
     <div class="card-header d-flex align-items-center">
@@ -99,7 +102,8 @@
                         <td>{{$game->product_price}}€</td>
                         <td>{{$game->product_stock}}</td>
                         <td>
-                            <button class="btn btn-info">Détails</button>
+                            <button class="btn btn-info update" data-id="{{$game->product_id}}"><i class="fas fa-edit"></i></button>
+                            <a href="{{route('admin.game.delete', ['id'=>$game->product_id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -115,6 +119,21 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('button.update').on('click', function(e){
+            var id = $(this).data('id');
+            var token = "{{ csrf_token() }}";
+            $.ajax({
+                url: '{{route("admin.game.updatemodal")}}',
+                type: 'POST',
+                data: {'id': id, '_token': token},
+                dataType: 'html',
+                success: function(result){
+                    $('#updateModal').html(result);
+                    $('#updateGameModal').modal('show');
+                }
+            });
+        });
+
 
         $('input[type="file"]').on('change', function(e){
             var label = $(this).next();

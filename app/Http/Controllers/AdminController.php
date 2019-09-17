@@ -20,8 +20,13 @@ class AdminController extends Controller
         return view('admin.index', $data);
     }
 
-    function login(){
-        return view('admin.login');
+    function login($error = null){
+        $msg = "";
+        if(!empty($error)){
+            $msg = "Veuillez vous connecter avec un compte admin";
+        }
+
+        return view('admin.login', ['msg' => $msg]);
     }
 
     function verifyLogin(Request $request){
@@ -73,6 +78,47 @@ class AdminController extends Controller
         $categories = $request->categories;
         // Ajout de catégorie correspondant
         $product->categories()->attach($categories);
+
+        return redirect()->route('admin.game.list');
+    }
+
+    function updateGame(Request $request){
+
+        $validatedData = $request->validate([
+            'product_name' => 'required',
+            'product_description' => 'required',
+            'product_price' => 'required',
+            'product_stock' => 'required',
+            'categories' => 'required'
+        ]);
+
+        $game = Models\Product::find($request->product_id);
+
+        $game->product_name = $request->product_name;
+        $game->product_description = $request->product_description;
+        if(!empty($request->product_image)){
+            $img_name = Str::camel($request->product_name) . $request->product_image->getClientOriginalExtension();
+            $request->product_imageBoxArt->move(public_path('resources/img/game/gameBoxArt'), $img_name);
+            $request->product_imageSquare->move(public_path('resources/img/game/gameSquare'), $img_name);
+            $game->product_image = $img_name;
+        }
+        $game->product_price = $request->product_price;
+        $game->product_stock = $request->product_stock;
+
+        $game->save();
+
+        $categories = $request->categories;
+        // Ajout de catégorie correspondant
+        $game->categories()->detach();
+        $game->categories()->attach($categories);
+
+        return redirect()->route('admin.game.list');
+    }
+
+    function deleteGame($id){
+        $game = Models\Product::find($id);
+        $game->categories()->detach();
+        $game->delete();
 
         return redirect()->route('admin.game.list');
     }

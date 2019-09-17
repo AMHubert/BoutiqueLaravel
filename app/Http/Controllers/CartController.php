@@ -64,7 +64,7 @@ class CartController extends Controller
                     $product->product_description = $item[0]->_description;
                     $product->product_image = $item[0]->_img;
                     $product->product_price = $item[0]->_price;
-                    $product->category_id = Classes\Category::getCategoryId($item[0]->_category);
+                    $product->category_name = $item[0]->_category;
                     $product->order_id = $order->order_id;
                     $product->quantity = $item[1];
 

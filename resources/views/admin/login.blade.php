@@ -42,6 +42,12 @@
                             <div class="content">
                                 <form action="{{route('admin.login-verify')}}" method="post" class="form-validate">
                                     @csrf
+                                    @if (!empty($msg))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{$msg}}
+                                        </div>
+                                    @endif
+
                                     <div class="form-group">
                                         <input id="login-username" class="input-material" type="text"
                                             name="loginEmail" required>

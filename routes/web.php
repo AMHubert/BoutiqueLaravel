@@ -34,13 +34,16 @@ Route::get('/logout', 'UserController@logout')->name('user.logout');
 Route::post('/updateinfo', 'UserController@changeinfo')->name('user.changeinfo');
 
 // Admin Page Route
-Route::get('/admin/login', 'AdminController@login')->name('admin.login');
+Route::get('/admin/login/{error?}', 'AdminController@login')->name('admin.login');
 Route::post('/admin/login/verify', 'AdminController@verifyLogin')->name('admin.login-verify');
 Route::middleware('admin')->group(function(){
     Route::get('/admin', 'AdminController@index')->name('admin.index');
     // Route Game
     Route::get('/admin/games', 'AdminController@gameList')->name('admin.game.list');
     Route::post('/admin/addgame', 'AdminController@addGame')->name('admin.game.add');
+    Route::post('/admin/gameupdatemodal', 'ModalFormController@updateGameModal')->name('admin.game.updatemodal');
+    Route::post('/admin/gameupdate', 'AdminController@updateGame')->name('admin.game.update');
+    Route::get('/admin/gamedelete/{id}', 'AdminController@deleteGame')->name('admin.game.delete');
     // Route Category
     Route::get('/admin/categories', 'AdminController@categoryList')->name('admin.category.list');
     Route::post('/admin/addcategory', 'AdminController@addCategory')->name('admin.category.add');

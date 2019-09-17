@@ -19,10 +19,9 @@ class CreateProductorderTable extends Migration
             $table->text('product_description');
             $table->string('product_image');
             $table->float('product_price');
-            $table->unsignedBigInteger('category_id');
+            $table->string('category_name');
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('quantity');
-            $table->foreign('category_id', "fk_productorder_categories")->references('category_id')->on('categories');
             $table->foreign('order_id', "fk_productorder_order")->references('order_id')->on('order');
         });
     }
