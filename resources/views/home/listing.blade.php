@@ -11,7 +11,7 @@
         <div class="col-3">
             <div class="card text-center h-100">
                 <div class="card-list-img">
-                    <img src="{{asset('resources/img/game/gameBoxArt/'.$product->product_image)}}" class="card-img-top game-img" alt="Image de {{$product->product_name}}">
+                    <img src="{{asset('resources/img/game/gameBoxArt/'.$product->product_image)}}" class="card-img-top game-img" alt="Image de {{$product->product_name}}" loading="lazy">
                     @if($product->product_stock === 0)
                         <div class="out-stock">
                             <div class="overlay-text">Non disponible</div>

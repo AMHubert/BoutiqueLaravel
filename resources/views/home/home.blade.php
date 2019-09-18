@@ -21,7 +21,7 @@
 
         @foreach($productsCat as $product)
           <div class="card" style="width: 18rem;">
-            <img src="{{asset('resources/img/game/gameBoxArt/'.$product->product_image)}}" class="card-img-top" alt="Image de {{$product->product_name}}">
+            <img src="{{asset('resources/img/game/gameBoxArt/'.$product->product_image)}}" class="card-img-top" alt="Image de {{$product->product_name}}" loading="lazy">
             <div class="card-body">
                 <h5 class="card-title">{{$product->product_name}} ({{$product->category_name}})</h5>
                 <p class="card-text">{{$product->product_description}}</p>
