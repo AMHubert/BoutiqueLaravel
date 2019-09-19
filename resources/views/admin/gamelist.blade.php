@@ -93,7 +93,7 @@
                     <tr>
                         <td>{{$game->product_id}}</td>
                         <td>{{$game->product_name}}</td>
-                        <td>{{Str::limit($game->product_description, $limit = 50, $end = '...')}}</td>
+                        <td>{!! Str::limit(strip_tags($game->product_description), $limit = 50, $end = '...') !!}</td>
                         <td>
                             @foreach ($game->categories as $category)
                             {{$category->category_name}}<br>
@@ -117,8 +117,20 @@
 @endsection
 
 @section('scripts')
+<script src="{{asset('/resources/js/tinymce/tinymce.min.js')}}"></script>
 <script>
+    $option = [{
+        selector: 'textarea',
+        menu: 'none',
+        toolbar: 'undo redo | styleselect | bold italic underline strikethrough'
+    }]
+
     $(document).ready(function(){
+        tinymce.init({
+            selector: 'textarea',
+            menubar: false,
+            toolbar: 'undo redo | styleselect | bold italic underline strikethrough'
+        });
         $('button.update').on('click', function(e){
             var id = $(this).data('id');
             var token = "{{ csrf_token() }}";
@@ -130,6 +142,11 @@
                 success: function(result){
                     $('#updateModal').html(result);
                     $('#updateGameModal').modal('show');
+                    tinymce.init({
+                        selector: 'textarea',
+                        menubar: false,
+                        toolbar: 'undo redo | styleselect | bold italic underline strikethrough'
+                    });
                 }
             });
         });

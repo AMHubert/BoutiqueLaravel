@@ -11,7 +11,7 @@
                 <h4>Plateforme : {{$category_name}}</h4>
             @endif
             <h4>Description :</h4>
-            <p>{{$product->product_description}}</p>
+            <p>{!! $product->product_description !!}</p>
             <h4>Prix :</h4>
             <p>{{$product->product_price}}€</p>
             @if($product->product_stock === 0)

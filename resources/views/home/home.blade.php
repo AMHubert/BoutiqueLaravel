@@ -24,7 +24,7 @@
             <img src="{{asset('resources/img/game/gameBoxArt/'.$product->product_image)}}" class="card-img-top" alt="Image de {{$product->product_name}}" loading="lazy">
             <div class="card-body">
                 <h5 class="card-title">{{$product->product_name}} ({{$product->category_name}})</h5>
-                <p class="card-text">{{$product->product_description}}</p>
+                <p class="card-text">{!! $product->product_description !!}</p>
                 {{-- <i href="{{route('product.details', ['categoryName' => str_replace(" ", "-", $product->category_name), 'productId' => $product->product_id])}}" class="btn btn-primary">Détails <i class="fas fa-angle-double-right"></i></i> --}}
             </div>
             <div class="card-footer">
