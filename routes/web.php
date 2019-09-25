@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,17 +18,27 @@
 // });
 
 // Home Route
+
+
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/listing/{categoryName}/{search?}', 'HomeController@listing')->name('listing.category');
-Route::post('/search', 'HomeController@search')->name('listing.search');
+//Route::post('/search', 'HomeController@search')->name('listing.search');
+Route::post('/search', function (Request $request) {
+    $search = $request->search;
+    return redirect()->route('listing.search.pretty', ['search' => $search]);
+})->name('listing.search');
+Route::get('/search/{search}', 'HomeController@search')->name('listing.search.pretty');
 Route::get('/details/{categoryName}/{productId}', 'HomeController@details')->name('product.details');
 Route::get('/account', 'HomeController@account')->name('home.account');
 
 // Cart Route
 Route::get('/cart', 'CartController@cart')->name('cart.page');
 Route::post('/addToCart', 'CartController@addToCart')->name('cart.add');
+Route::post('/cart/update', 'CartController@updateCart')->name('cart.update');
+Route::post('/cart/remove', 'CartController@removeFromCart')->name('cart.remove');
 Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
+
 
 // User Route
 Auth::routes();
@@ -36,6 +48,7 @@ Route::post('/updateinfo', 'UserController@changeinfo')->name('user.changeinfo')
 // Admin Page Route
 Route::get('/admin/login/{error?}', 'AdminController@login')->name('admin.login');
 Route::post('/admin/login/verify', 'AdminController@verifyLogin')->name('admin.login-verify');
+Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
 Route::middleware('admin')->group(function(){
     Route::get('/admin', 'AdminController@index')->name('admin.index');
     // Route Game

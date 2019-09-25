@@ -51,7 +51,7 @@
                             <th>#</th>
                             <th>Nom</th>
                             <th>Email</th>
-                            <th>Action</th>
+                            <th class="action">Action</th>
                         </tr>
                     </thead>
                     <tbody>

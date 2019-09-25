@@ -29,6 +29,7 @@ class Product {
                                 ->join('categories', 'productcategory.category_id', '=', 'categories.category_id')
                                 ->join('products', 'productcategory.product_id', '=', 'products.product_id')
                                 ->select('categories.*', 'products.*')
+                                ->where('products.product_highlighted', 1)
                                 ->inRandomOrder()
                                 ->limit(3)->get();
 

@@ -47,7 +47,6 @@
                                             {{$msg}}
                                         </div>
                                     @endif
-
                                     <div class="form-group">
                                         <input id="login-username" class="input-material" type="text"
                                             name="loginEmail" required>

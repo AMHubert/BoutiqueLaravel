@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label for="product_description">Description:</label>
-                        <textarea class="form-control" name="product_description" id="product_description"></textarea>
+                        <textarea class="form-control add" name="product_description" id="product_description"></textarea>
                     </div>
                     <p>Image Box Art (600x800 recommandé):</p>
                     <div class="form-group">
@@ -54,6 +54,13 @@
                         </div>
                         @endforeach
                     </div>
+                    <p>Autres:</p>
+                    <div class="row my-2">
+                        <div class="col-6 custom-control custom-checkbox">
+                            <input type='checkbox' class='custom-control-input' id="product_highlight" name="product_highlight">
+                            <label class='custom-control-label ml-3' for="product_highlight">Produit phare</label>
+                        </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                         <button type="submit" class="btn btn-primary">Ajouter</button>
@@ -85,7 +92,7 @@
                         <th>Categorie</th>
                         <th>Prix</th>
                         <th>Stock</th>
-                        <th>Action</th>
+                        <th class="action">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -93,7 +100,9 @@
                     <tr>
                         <td>{{$game->product_id}}</td>
                         <td>{{$game->product_name}}</td>
-                        <td>{!! Str::limit(strip_tags($game->product_description), $limit = 50, $end = '...') !!}</td>
+                        <td>
+                            <div class="desc-width">{!! $game->product_description !!}</div>
+                        </td>
                         <td>
                             @foreach ($game->categories as $category)
                             {{$category->category_name}}<br>
@@ -102,8 +111,12 @@
                         <td>{{$game->product_price}}€</td>
                         <td>{{$game->product_stock}}</td>
                         <td>
-                            <button class="btn btn-info update" data-id="{{$game->product_id}}"><i class="fas fa-edit"></i></button>
-                            <a href="{{route('admin.game.delete', ['id'=>$game->product_id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <button class="btn btn-info update" data-id="{{$game->product_id}}" data-toggle="tooltip" data-placement="top" title="Modifier">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <a href="{{route('admin.game.delete', ['id'=>$game->product_id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
+								<i class="fas fa-trash-alt"></i>
+							</a>
                         </td>
                     </tr>
                     @endforeach
@@ -119,6 +132,9 @@
 @section('scripts')
 <script src="{{asset('/resources/js/tinymce/tinymce.min.js')}}"></script>
 <script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
     $option = [{
         selector: 'textarea',
         menu: 'none',
@@ -127,9 +143,9 @@
 
     $(document).ready(function(){
         tinymce.init({
-            selector: 'textarea',
+            selector: 'textarea.add',
             menubar: false,
-            toolbar: 'undo redo | styleselect | bold italic underline strikethrough'
+            toolbar: 'undo redo | bold italic underline strikethrough'
         });
         $('button.update').on('click', function(e){
             var id = $(this).data('id');
@@ -143,9 +159,13 @@
                     $('#updateModal').html(result);
                     $('#updateGameModal').modal('show');
                     tinymce.init({
-                        selector: 'textarea',
+                        selector: 'textarea.update',
                         menubar: false,
-                        toolbar: 'undo redo | styleselect | bold italic underline strikethrough'
+                        toolbar: 'undo redo | bold italic underline strikethrough'
+                    });
+                    $('#updateGameModal').on('hidden.bs.modal', ()=>{
+                        tinymce.remove('textarea.update');
+                        $('#updateModal').html('');
                     });
                 }
             });

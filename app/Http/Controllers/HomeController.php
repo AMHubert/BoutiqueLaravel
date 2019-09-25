@@ -41,12 +41,13 @@ class HomeController extends Controller
         return view('home.listing', $data);
     }
 
-    public function search(Request $request){
-
-        $products = Product::getSearchProduct($request->search);
+    public function search($search){
+        //$search = $request->search;
+        $products = Product::getSearchProduct($search);
 
         $data = [
             'products' => $products,
+            'search' => $search,
             'isSearch' => true
         ];
 

@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="nav-menu d-flex flex-md-row align-items-md-center">
-                    <a href="{{route('user.logout')}}" class="nav-link logout">
+                    <a href="{{route('admin.logout')}}" class="nav-link logout">
                         <span class="d-none d-sm-inline">Logout </span><i class="fas fa-sign-out-alt ml-1"></i>
                     </a>
                 </div>
@@ -47,7 +47,7 @@
         <span class="heading">Extra</span>
         <ul>
             <li>
-                <a href="{{route('user.logout')}}">
+                <a href="{{route('admin.logout')}}">
                     <i class="fas fa-sign-out-alt fa-2x"></i> Logout
                 </a>
             </li>

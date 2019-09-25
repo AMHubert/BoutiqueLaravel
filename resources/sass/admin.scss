@@ -146,6 +146,28 @@ main {
         background-color: #fff;
         border-bottom: 1px solid #eee;
     }
+
+    table {
+        tr{
+            th.action{
+                width: 120px;
+            }
+
+            td{
+                vertical-align: middle !important;
+
+                div.desc-width{
+                    width: 500px;
+
+                    p{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
 }
 
 footer {

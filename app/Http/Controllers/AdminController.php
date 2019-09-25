@@ -29,6 +29,11 @@ class AdminController extends Controller
         return view('admin.login', ['msg' => $msg]);
     }
 
+    function logout(){
+        Auth::logout();
+        return redirect()->route('admin.login');
+    }
+
     function verifyLogin(Request $request){
         if(Auth::attempt(['email' => $request->loginEmail, 'password' => $request->loginPassword, 'isAdmin' => 1])){
             return redirect()->route('admin.index');
@@ -65,13 +70,14 @@ class AdminController extends Controller
         $product->product_name = $request->product_name;
         $product->product_description = $request->product_description;
         if(!empty($request->product_image)){
-            $img_name = Str::camel($request->product_name) . $request->product_image->getClientOriginalExtension();
+            $img_name = Str::camel($request->product_name) .".". $request->product_image->getClientOriginalExtension();
             $request->product_imageBoxArt->move(public_path('resources/img/game/gameBoxArt'), $img_name);
             $request->product_imageSquare->move(public_path('resources/img/game/gameSquare'), $img_name);
             $product->product_image = $img_name;
         }
         $product->product_price = $request->product_price;
         $product->product_stock = $request->product_stock;
+        $product->product_highlighted = $request->product_highlighted;
 
         $product->save();
 
@@ -104,6 +110,7 @@ class AdminController extends Controller
         }
         $game->product_price = $request->product_price;
         $game->product_stock = $request->product_stock;
+        $game->product_highlighted = $request->product_highlighted;
 
         $game->save();
 

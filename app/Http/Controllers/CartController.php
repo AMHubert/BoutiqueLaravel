@@ -47,6 +47,21 @@ class CartController extends Controller
         return redirect()->route('cart.page');
     }
 
+    function updateCart(Request $request) {
+        $productId = $request->productId;
+        $productCategory = $request->productCategory;
+        $quantity = $request->quantity;
+        Cart::updateCart($productId, $productCategory, $quantity);
+        return redirect()->route('cart.page');
+    }
+
+    function removeFromCart(Request $request) {
+        $productId = $request->productId;
+        $productCategory = $request->productCategory;
+        Cart::removeFromCart($productId, $productCategory);
+        return redirect()->route('cart.page');
+    }
+
     function checkout(Request $request) {
         if(Auth::check()){
             DB::transaction(function () {

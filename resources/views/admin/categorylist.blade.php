@@ -46,7 +46,7 @@
                         <th>#</th>
                         <th>Nom</th>
                         <th>Description</th>
-                        <th>Action</th>
+                        <th class="action">Action</th>
                     </tr>
                 </thead>
                 <tbody>

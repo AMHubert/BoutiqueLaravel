@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <script src="{{asset('resources/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('resources/js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('resources/js/popper.min.js')}}"></script>
     <script src="{{asset('resources/bootstrap/js/bootstrap.min.js')}}"></script>
 </head>
 <body class="page vh-100">

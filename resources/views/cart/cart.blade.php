@@ -36,14 +36,21 @@
 							<td>{{$item[0]->_name}}</td>
 							<td>{{$item[0]->_price}}€</td>
 							<td class="quantity-cell">
-								<form action="updateQte.php" method="post">
+                                <form action="{{route('cart.update')}}" method="post">
+                                    @csrf
 									<input type="hidden" name="productId" value="{{$item[0]->_id}}">
+									<input type="hidden" name="productCategory" value="{{$item[0]->_category}}">
 									<input type="number" class="form-control-sm" name="quantity" value="{{$item[1]}}" min="1">
 								</form>
 							</td>
 							<td>{{number_format($item[1]*$item[0]->_price, 2, ',', ' ')}}€</td>
 							<td>
-								<a href="removeProduct.php?id={{$item[0]->_id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                <form action="{{route('cart.remove')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="productId" value="{{$item[0]->_id}}">
+                                    <input type="hidden" name="productCategory" value="{{$item[0]->_category}}">
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                </form>
 							</td>
 						</tr>
 						@endforeach
@@ -69,11 +76,14 @@
 
 @section('scripts')
 <script>
-    $("input[type='number']").inputSpinner();
-	$("input[type='number']").each(function( index ) {
-		$(this).on("change", function(){
-			$(this).parent().submit();
-		});
-	});
+    $(document).ready(function(){
+        $("input[type='number']").inputSpinner();
+        $("input[type='number']").each(function( index ) {
+            $(this).on("change", function(){
+                $(this).parent().submit();
+            });
+        });
+    })
+
 </script>
 @endsection

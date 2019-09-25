@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label for="product_description_update">Description:</label>
-                        <textarea class="form-control" name="product_description" id="product_description_update">{{$game->product_description}}</textarea>
+                        <textarea class="form-control update" name="product_description" id="product_description_update">{{$game->product_description}}</textarea>
                     </div>
                     <p>Image Box Art (600x800 recommandé):</p>
                     <div class="form-group">
@@ -47,11 +47,19 @@
                         @foreach ($categories as $category)
                         <div class='col-6 custom-control custom-checkbox'>
                             <input type='checkbox' class='custom-control-input' id="cat{{$category->category_id}}_update"
-                                name='categories[]' value='{{$category->category_id}}'>
+                                name='categories[]' value='{{$category->category_id}}'
+                                {{ $game->categories->contains('category_id', $category->category_id) ? 'checked' : '' }}>
                             <label class='custom-control-label ml-3'
                                 for="cat{{$category->category_id}}_update">{{$category->category_name}}</label>
                         </div>
                         @endforeach
+                    </div>
+                    <p>Autres:</p>
+                    <div class="row my-2">
+                        <div class="col-6 custom-control custom-checkbox">
+                            <input type='checkbox' class='custom-control-input' id="product_highlight_update" name="product_highlight">
+                            <label class='custom-control-label ml-3' for="product_highlight_update">Produit phare</label>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

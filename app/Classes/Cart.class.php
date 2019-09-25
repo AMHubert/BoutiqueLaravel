@@ -34,19 +34,52 @@ class Cart
         $productKey = self::findProductInCartById($product->_id);
         $cartSession = session()->get('cart');
         if ($productKey !== false) {
-            $cartSession[$productKey][1] += $quantity;
-            session()->forget('cart');
-            session()->put('cart', $cartSession);
+            if($cartSession[$productKey][0]->_category === $product->_category){
+                $cartSession[$productKey][1] += $quantity;
+                session()->forget('cart');
+                session()->put('cart', $cartSession);
+            }
+            else{
+                $cart = [$product, $quantity];
+                session()->push('cart', $cart);
+            }
         } else {
             $cart = [$product, $quantity];
             session()->push('cart', $cart);
         }
     }
 
+    static function updateCart($productId, $productCategory, $quantity) {
+        $productKey = self::findProductInCart($productId, $productCategory);
+        $cartSession = session()->get('cart');
+        $cartSession[$productKey][1] = $quantity;
+        session()->forget('cart');
+        session()->put('cart', $cartSession);
+    }
+
+    static function removeFromCart($productId, $productCategory){
+        $productKey = self::findProductInCart($productId, $productCategory);
+        $cartSession = session()->get('cart');
+        array_splice($cartSession, $productKey, 1);
+        session()->forget('cart');
+        session()->put('cart', $cartSession);
+    }
+
     private static function findProductInCartById($productId) {
         $productKey = false;
         foreach (self::getCart() as $key => $value) {
             if ($value[0]->_id === $productId) {
+                $productKey = $key;
+                break;
+            }
+        }
+        return $productKey;
+    }
+
+    private static function findProductInCart($productId, $productCategory){
+        $productKey = false;
+        foreach (self::getCart() as $key => $value) {
+            if ($value[0]->_id === $productId && $value[0]->_category === $productCategory) {
                 $productKey = $key;
                 break;
             }
