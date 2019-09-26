@@ -41,8 +41,6 @@ class CartController extends Controller
 
         $quantity = $request->quantity;
         Cart::addToCart($product, $quantity);
-        //$cart = [$product, $quantity];
-        //$request->session()->push('cart', $cart);
 
         return redirect()->route('cart.page');
     }
@@ -62,7 +60,7 @@ class CartController extends Controller
         return redirect()->route('cart.page');
     }
 
-    function checkout(Request $request) {
+    function checkout() {
         if(Auth::check()){
             DB::transaction(function () {
                 $order = new Models\Order;

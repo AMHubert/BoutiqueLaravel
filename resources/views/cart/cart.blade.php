@@ -28,7 +28,7 @@
                         @foreach ($cart as $item)
 						<tr id="cart-list" class="border">
 							<td>
-								<a href="{{route('product.details', ['categoryName'=> $item[0]->_category, 'productId'=>$item[0]->_id])}}">
+								<a href="{{route('product.details', ['categorySlug'=> Str::slug($item[0]->_category), 'productId'=>$item[0]->_id])}}">
 									<img class="cart-game-img" src="{{asset('resources/img/game/gameSquare/'.$item[0]->_img)}}" alt="Image de {{$item[0]->_name}}">
 								</a>
 							</td>

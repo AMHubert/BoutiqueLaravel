@@ -33,6 +33,7 @@ class HomeController extends Controller
 
         $data = [
             'category_name' => $categoryName,
+            'category_slug' => $categorySlug,
             'products' => $products,
             'isSearch' => false
         ];
@@ -71,14 +72,19 @@ class HomeController extends Controller
 
     public function account()
     {
-        $user = Auth::user();
-        $orders = Order::getAllUserOrder($user->id);
+        if(Auth::check()){
+            $user = Auth::user();
+            $orders = Order::getAllUserOrder($user->id);
 
-        $data = [
-            "user" => $user,
-            'orders' => $orders
-        ];
+            $data = [
+                "user" => $user,
+                'orders' => $orders
+            ];
 
-        return view('home.account', $data);
+            return view('home.account', $data);
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 }
