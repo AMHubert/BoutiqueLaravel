@@ -42,7 +42,7 @@ class Product {
                     ->join('products', 'productcategory.product_id', '=', 'products.product_id')
                     ->select('products.*', 'categories.*')
                     ->where('products.product_name', 'like',  '%'.$search.'%')
-                    ->get();
+                    ->paginate(20);
 
         return $product;
     }

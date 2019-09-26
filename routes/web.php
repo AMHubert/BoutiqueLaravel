@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +23,15 @@ use Illuminate\Http\Request;
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/listing/{categoryName}/{search?}', 'HomeController@listing')->name('listing.category');
+Route::get('/listing/{categorySlug}', 'HomeController@listing')->name('listing.category');
 //Route::post('/search', 'HomeController@search')->name('listing.search');
 Route::post('/search', function (Request $request) {
-    $search = $request->search;
-    return redirect()->route('listing.search.pretty', ['search' => $search]);
+    $search = Str::slug($request->search);
+    session(['search' => $request->search]);
+    return redirect()->route('listing.search.pretty', ['searchslug' => $search]);
 })->name('listing.search');
-Route::get('/search/{search}', 'HomeController@search')->name('listing.search.pretty');
-Route::get('/details/{categoryName}/{productId}', 'HomeController@details')->name('product.details');
+Route::get('/search/{searchslug}', 'HomeController@search')->name('listing.search.pretty');
+Route::get('/details/{categorySlug}/{productId}', 'HomeController@details')->name('product.details');
 Route::get('/account', 'HomeController@account')->name('home.account');
 
 // Cart Route

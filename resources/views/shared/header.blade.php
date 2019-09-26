@@ -19,7 +19,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach ($categories as $category)
-                            <a class="dropdown-item" href="{{route('listing.category', ['categoryName'=> str_replace(" ", "-", $category->category_name)])}}">{{$category->category_name}}</a>
+                            <a class="dropdown-item" href="{{route('listing.category', ['categorySlug'=> $category->category_slug])}}">{{$category->category_name}}</a>
                         @endforeach
                     </div>
                 </li>
@@ -33,6 +33,7 @@
                     <div class="input-group-append">
                         <button class="btn btn-light btn-outline-secondary" type="submit">
                             <i class="fas fa-search"></i>
+                            <span class="sr-only">Rechercher</span>
                         </button>
                     </div>
                 </div>

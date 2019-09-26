@@ -25,12 +25,11 @@ class HomeController extends Controller
         return view('home.home', $data);
     }
 
-    public function listing($categoryName) {
-        $categoryName = str_replace("-", " ", $categoryName);
-        $category = Models\Category::all()->where('category_name', $categoryName)->first(); //Get category by name
+    public function listing($categorySlug) {
+        $category = Models\Category::where('category_slug', $categorySlug)->first(); //Get category by slug
         if(empty($category)){ return view('error.404'); }
         $categoryName = $category->category_name;
-        $products = $category->products()->get();
+        $products = $category->products()->paginate(20);
 
         $data = [
             'category_name' => $categoryName,
@@ -41,9 +40,10 @@ class HomeController extends Controller
         return view('home.listing', $data);
     }
 
-    public function search($search){
-        //$search = $request->search;
+    public function search($searchslug){
+        $search = session('search');
         $products = Product::getSearchProduct($search);
+        session()->forget('search');
 
         $data = [
             'products' => $products,
@@ -54,12 +54,13 @@ class HomeController extends Controller
         return view('home.listing', $data);
     }
 
-    public function details($categoryName, $productId) {
-        $categoryName = str_replace("-", " ", $categoryName);
+    public function details($categorySlug, $productId) {
         $product = Models\Product::find($productId);
-        $category = Models\Category::all()->where('category_name', $categoryName)->first();
+        $category = $product->categories()->where('category_slug', $categorySlug)->first();
 
         if(empty($product) || empty($category)){ return view('error.404'); }
+
+        $categoryName = $category->category_name;
 
         $data = [
             'category_name' => $categoryName,
