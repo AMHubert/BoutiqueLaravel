@@ -63,14 +63,13 @@ class AdminController extends Controller
             'categories' => 'required'
         ]);
 
-
         // Création d'un nouveau produit
         $product = new Models\Product;
         // Remplissage des champs
         $product->product_name = $request->product_name;
         $product->product_description = $request->product_description;
-        if(!empty($request->product_image)){
-            $img_name = Str::camel($request->product_name) .".". $request->product_image->getClientOriginalExtension();
+        if(!empty($request->product_imageBoxArt)){
+            $img_name = Str::camel($request->product_name) .".". $request->product_imageBoxArt->getClientOriginalExtension();
             $request->product_imageBoxArt->move(public_path('resources/img/game/gameBoxArt'), $img_name);
             $request->product_imageSquare->move(public_path('resources/img/game/gameSquare'), $img_name);
             $product->product_image = $img_name;
@@ -102,8 +101,8 @@ class AdminController extends Controller
 
         $game->product_name = $request->product_name;
         $game->product_description = $request->product_description;
-        if(!empty($request->product_image)){
-            $img_name = Str::camel($request->product_name) . $request->product_image->getClientOriginalExtension();
+        if(!empty($request->product_imageBoxArt)){
+            $img_name = Str::camel($request->product_name) .".". $request->product_imageBoxArt->getClientOriginalExtension();
             $request->product_imageBoxArt->move(public_path('resources/img/game/gameBoxArt'), $img_name);
             $request->product_imageSquare->move(public_path('resources/img/game/gameSquare'), $img_name);
             $game->product_image = $img_name;
